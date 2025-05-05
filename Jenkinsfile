@@ -15,6 +15,7 @@ pipeline {
                 bat 'mvn clean package'
             }
         }
+        /*
         stage('Deploy to Tomcat') {
             steps {
                 deploy adapters: [
@@ -26,5 +27,7 @@ pipeline {
                 ], contextPath: 'gestion-calidad', war: 'target/*.war'
             }
         }
+        */
+
     }
 }
