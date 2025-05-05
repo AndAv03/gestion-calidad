@@ -35,7 +35,7 @@ pipeline {
             // Ejecutar el JAR en segundo plano
             bat "start java -jar ${jarFile}"
 
-            // Verificar que el servicio está disponible (en el puerto 8080)
+            // Verificar que el servicio está disponible (en el puerto 8081)
             waitUntil {
                 script {
                     return bat(script: 'curl -s http://localhost:8081', returnStatus: true) == 0
