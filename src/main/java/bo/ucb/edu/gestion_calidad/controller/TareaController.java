@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
-@RequestMapping("/gestion-calidad")
 public class TareaController {
 
     private final List<Tarea> tareas = new ArrayList<>();
