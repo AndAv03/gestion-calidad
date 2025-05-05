@@ -1,27 +1,29 @@
 pipeline {
     agent any
     tools {
-        maven "MVN_339"
+        maven "Maven"
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/AndAv03/gestion-calidad.git'
-            }
+                git branch: 'main', url: 'https://github.com/AndAv03/gestion-calidad.git'
+            }   
         }
         stage('Clean and Package') {
             steps {
-                dir('gestion-calidad') {
-                    sh 'mvn clean package'
-                }
+                bat 'mvn clean package'
             }
         }
         stage('Deploy to Tomcat') {
             steps {
-                dir('gestion-calidad') {
-                    deploy adapters: [tomcat8(credentialsId: '88f65f86-bb87-4529-9567-ac1f2adb1939', path: '', url: 'http://localhost:8081')], contextPath: 'gestion-calidad', war: 'target/*.war'
-                }
+                deploy adapters: [
+                    tomcat9(
+                        credentialsId: 'TOMCATDEPLOYER',
+                        path: '',
+                        url: 'http://localhost:8085'
+                    )
+                ], contextPath: 'gestion-calidad', war: 'target/*.war'
             }
         }
     }
