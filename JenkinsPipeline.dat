@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Clean and Package') {
             steps {
-                bat './mvnw.cmd clean package'
+                bat 'mvn clean package'
             }
         }
         stage('Deploy to Tomcat') {
@@ -21,9 +21,9 @@ pipeline {
                     tomcat9(
                         credentialsId: 'TOMCATDEPLOYER',
                         path: '',
-                        url: 'http://localhost:8081'
+                        url: 'http://localhost:8085'
                     )
-                ], contextPath: 'gestion-calidad', war: 'target/gestion-calidad.war'
+                ], contextPath: 'gestion-calidad', war: 'target/*.war'
             }
         }
     }
