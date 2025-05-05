@@ -11,7 +11,7 @@
     <groupId>bo.ucb.edu</groupId>
     <artifactId>gestion-calidad</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>gestion-calidad</name>
     <description>Demo project for Spring Boot</description>
     <url/>
@@ -38,6 +38,7 @@
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <scope>provided</scope>
                 </exclusion>
             </exclusions>
         </dependency>
