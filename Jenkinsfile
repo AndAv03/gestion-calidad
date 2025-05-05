@@ -48,9 +48,6 @@ pipeline {
                     } else {
                         echo 'El servicio no está disponible en el puerto 8081.'
                     }
-                    
-                    // El paso es exitoso independientemente del estado del servicio
-                    currentBuild.result = 'SUCCESS'
                 }
             }
         }
