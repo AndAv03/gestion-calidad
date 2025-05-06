@@ -40,4 +40,41 @@ public class TareaController {
         }
         return "redirect:/";
     }
+
+    @PostMapping("/mover-arriba")
+    public String moverArriba(@RequestParam int id) {
+        for (int i = 1; i < tareas.size(); i++) {
+            if (tareas.get(i).getId() == id) {
+                Tarea temp = tareas.get(i - 1);
+                tareas.set(i - 1, tareas.get(i));
+                tareas.set(i, temp);
+                break;
+            }
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/mover-abajo")
+    public String moverAbajo(@RequestParam int id) {
+        for (int i = 0; i < tareas.size() - 1; i++) {
+            if (tareas.get(i).getId() == id) {
+                Tarea temp = tareas.get(i + 1);
+                tareas.set(i + 1, tareas.get(i));
+                tareas.set(i, temp);
+                break;
+            }
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/modificar")
+    public String modificarTarea(@RequestParam int id, @RequestParam String descripcion) {
+        for (Tarea tarea : tareas) {
+            if (tarea.getId() == id) {
+                tarea.setDescripcion(descripcion);
+                break;
+            }
+        }
+        return "redirect:/";
+    }
 }
